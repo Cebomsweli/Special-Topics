@@ -3,129 +3,485 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bridging the Digital Divide</title>
+  <title>Bridging the Digital Divide: 4IR/5IR in South African Rural Education</title>
   <style>
-    body {
-      font-family: Georgia, serif;
-      line-height: 1.6;
+    :root {
+      --primary-color: #004d66;
+      --secondary-color: #aad8d3;
+      --accent-color: #ff6b6b;
+      --text-color: #222;
+      --light-bg: #f9f9f9;
+      --white: #ffffff;
+      --gray: #555;
+      --light-gray: #e9e9e9;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
-      color: #222;
+      box-sizing: border-box;
     }
+    
+    body {
+      font-family: Georgia, serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: var(--light-bg);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
     header {
-      background: #004d66;
-      color: white;
-      padding: 2rem;
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 2.5rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,77,102,0.9) 0%, rgba(0,102,128,0.8) 100%);
+      z-index: 0;
+    }
+    
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+    
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1rem;
+    
+    header .subtitle {
+      margin: 0.8rem 0 0;
+      font-size: 1.3rem;
+      font-weight: 400;
     }
+    
+    header .author-info {
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .author-info div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Navigation */
+    .nav-container {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 0.8rem 0;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--accent-color);
+    }
+    
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      transition: var(--transition);
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    /* Main Content */
     main {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-      background: white;
+      background: var(--white);
+      padding: 3rem 0;
     }
+    
+    .article-content {
+      font-size: 1.1rem;
+    }
+    
+    .article-content p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    
+    .article-content h2 {
+      color: var(--primary-color);
+      margin: 2.5rem 0 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--secondary-color);
+    }
+    
+    .article-content ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .article-content li {
+      margin-bottom: 0.8rem;
+    }
+    
+    /* Figures */
+    figure {
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    
+    .img-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+    
     img {
       max-width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+    
+    .img-container:hover img {
+      transform: scale(1.03);
+    }
+    
+    figcaption {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-top: 0.8rem;
+      font-style: italic;
+    }
+    
+    /* Chart */
+    .chart-container {
+      background: var(--light-gray);
+      padding: 1.5rem;
       border-radius: 10px;
-      margin: 1rem 0;
+      margin: 2rem 0;
     }
-    h2 {
-      color: #004d66;
-      margin-top: 2rem;
-    }
-    figure {
+    
+    .chart {
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 60px;
       margin: 1.5rem 0;
-      text-align: center;
     }
-    figure figcaption {
-      font-size: 0.9rem;
-      color: #555;
+    
+    .bar {
+      width: 60px;
+      background: var(--primary-color);
+      position: relative;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
     }
+    
+    .urban {
+      height: 160px;
+      background: linear-gradient(to top, var(--primary-color), #006687);
+    }
+    
+    .rural {
+      height: 60px;
+      background: linear-gradient(to top, var(--accent-color), #ff8e8e);
+    }
+    
+    .bar-label {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+    }
+    
+    .bar-value {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+    }
+    
+    /* References */
+    .references {
+      background: var(--light-gray);
+      padding: 2rem;
+      border-radius: 10px;
+      margin-top: 3rem;
+    }
+    
+    .references h2 {
+      color: var(--primary-color);
+      margin-bottom: 1.2rem;
+    }
+    
+    .references ul {
+      list-style: none;
+    }
+    
+    .references li {
+      margin-bottom: 1.2rem;
+      padding-left: 1.5rem;
+      text-indent: -1.5rem;
+    }
+    
+    .references a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .references a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+    
+    /* Footer */
     footer {
-      background: #004d66;
-      color: white;
+      background: var(--primary-color);
+      color: var(--white);
       text-align: center;
-      padding: 1rem;
+      padding: 2rem;
       margin-top: 2rem;
     }
+    
+    footer p {
+      margin: 0.5rem 0;
+    }
+    
     footer a {
-      color: #aad8d3;
+      color: var(--secondary-color);
       text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    footer a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      nav ul {
+        gap: 1rem;
+      }
+      
+      .article-content {
+        font-size: 1rem;
+      }
+      
+      .chart {
+        gap: 40px;
+      }
+      
+      .bar {
+        width: 40px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        padding: 1.5rem 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.7rem;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      
+      .author-info {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .chart {
+        gap: 30px;
+      }
+      
+      .bar {
+        width: 30px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Bridging the Digital Divide</h1>
-    <p>How the Fourth and Fifth Industrial Revolutions Can Transform Rural Education in South Africa</p>
-    <p><strong>Author:</strong> Cobolenkosi Msweli | <strong>Year:</strong> 2025</p>
+    <div class="container">
+      <h1>Bridging the Digital Divide</h1>
+      <p class="subtitle">How the Fourth and Fifth Industrial Revolutions Can Transform Rural Education in South Africa</p>
+      <div class="author-info">
+        <div><strong>Author:</strong> Cobolenkosi Msweli</div>
+        <div><strong>Year:</strong> 2025</div>
+      </div>
+    </div>
   </header>
 
+  <div class="nav-container">
+    <nav>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#meaning">What 4IR/5IR Means</a></li>
+        <li><a href="#readiness">SA's Readiness</a></li>
+        <li><a href="#challenges">Challenges</a></li>
+        <li><a href="#opportunities">Opportunities</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </nav>
+  </div>
+
   <main>
-    <figure>
-      <img src="Picture1.jpg" alt="Learners using laptops in a South African classroom">
-      <figcaption>Learners using laptops in a South African classroom during a digital literacy initiative. (Photo: SABEN, CC-BY)</figcaption>
-    </figure>
+    <div class="container article-content">
+      <figure>
+        <div class="img-container">
+          <img src="Picture1.jpg" alt="Learners using laptops in a South African classroom">
+        </div>
+        <figcaption>Learners using laptops in a South African classroom during a digital literacy initiative. (Photo: SABEN, CC-BY)</figcaption>
+      </figure>
 
-    <p>The Fourth Industrial Revolution (4IR), with its emphasis on artificial intelligence, robotics, digital platforms, and the emerging Fifth Industrial Revolution (5IR), which prioritizes human-technology collaboration, are reshaping societies worldwide. These revolutions promise to transform how we live, work, and learn. For rural schools, the stakes are especially high. The choice is stark: be left behind, or leap forward...</p>
+      <p id="intro">The Fourth Industrial Revolution (4IR), with its emphasis on artificial intelligence, robotics, digital platforms, and the emerging Fifth Industrial Revolution (5IR), which prioritizes human-technology collaboration, are reshaping societies worldwide. These revolutions promise to transform how we live, work, and learn. For rural schools, the stakes are especially high. The choice is stark: be left behind, or leap forward. In South Africa, the key question is whether learners will be excluded from the digital shift or empowered by new technologies to bridge education gaps. It is imperative that we take collective action now; educators, policymakers, and communities must collaborate to ensure that rural learners are not left behind in this rapidly changing world.</p>
 
-    <h2>What 4IR/5IR mean for Education?</h2>
-    <p>4IR and 5IR are not abstract buzzwords. In education, they translate into practical technologies such as cloud-based learning platforms, artificial intelligence-powered tutoring systems, and interactive digital content...</p>
+      <h2 id="meaning">What 4IR/5IR mean for Education?</h2>
+      <p>4IR and 5IR are not abstract buzzwords. In education, they translate into practical technologies such as cloud-based learning platforms, artificial intelligence-powered tutoring systems, and interactive digital content. These tools can enhance access to quality education, reduce reliance on outdated materials, and offer learners new opportunities to develop digital literacy (Ahiaku, 2025). In rural South Africa-where many schools face shortages of teachers, libraries, and teaching aids, such tools could be transformative. By integrating computers, local networks, and even offline servers loaded with digital content, rural schools could shift from rote-based education to interactive, skills-oriented learning (Gardner Mwansa, 2025).</p>
 
-    <figure>
-      <img src="Picture2.jpg" alt="Learners in rural schools using tablets">
-      <figcaption>Learners in rural schools using tablets as part of a digital literacy initiative. (Photo: StoryHub, CC-BY)</figcaption>
-    </figure>
+      <figure>
+        <div class="img-container">
+          <img src="Picture2.jpg" alt="Learners in rural schools using tablets">
+        </div>
+        <figcaption>Learners in rural schools using tablets as part of a digital literacy initiative. (Photo: StoryHub, CC-BY)</figcaption>
+      </figure>
 
-    <h2>Assessing South Africa’s readiness</h2>
-    <p>The South African government has acknowledged the importance of digital skills through policies such as the National Digital and Future Skills Strategy (Africa, 2020). However, readiness remains uneven...</p>
+      <p>Furthermore, cloud-based platforms and localized networks can enable content sharing even where broadband access is limited. When utilized properly, these technologies have the potential to change traditional education into interactive, skills-focused curriculum, preparing pupils for engagement in the digital economy (International Labour Organization, 2022).</p>
 
-    <figure>
-      <img src="Picture3.jpg" alt="Internet Access in South African Schools">
-      <figcaption>Figure 1: Internet Access in South African Schools (2021). Source: Invigilator, 2023</figcaption>
-    </figure>
+      <h2 id="readiness">Assessing South Africa's readiness</h2>
+      <p>The South African government has acknowledged the importance of digital skills through policies such as the National Digital and Future Skills Strategy (Africa, 2020). However, readiness remains uneven. Around 80 percent of urban schools have some form of internet connectivity, compared to fewer than 30 percent of rural schools (Invigilator, 2023).</p>
 
-    <h2>Challenges in rural contexts</h2>
-    <ul>
-      <li>Infrastructure deficits: unreliable electricity, poor connectivity, and inadequate facilities (Aruleba, 2022).</li>
-      <li>Affordability barriers: laptops, tablets, and mobile data remain unaffordable for many households (Mwansa, 2025).</li>
-      <li>Teachers’ preparedness: low confidence in digital literacy (ILO, 2022).</li>
-    </ul>
+      <div class="chart-container">
+        <h3>Figure 1: Internet Access in South African Schools (2021)</h3>
+        <div class="chart">
+          <div class="bar urban">
+            <span class="bar-value">80%</span>
+            <span class="bar-label">Urban</span>
+          </div>
+          <div class="bar rural">
+            <span class="bar-value">30%</span>
+            <span class="bar-label">Rural</span>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 1.5rem;">Source: Invigilator, 2023</p>
+      </div>
 
-    <h2>Opportunities for transformation</h2>
-    <ul>
-      <li>AI-driven platforms could personalize learning (Ahiaku, 2025).</li>
-      <li>Solar-powered computer labs for off-grid areas (Mwansa, 2025).</li>
-      <li>Public-private partnerships to expand infrastructure (Africa, 2020).</li>
-      <li>Expanding digital resources in indigenous languages (Aruleba, 2022).</li>
-    </ul>
+      <p>These figures demonstrate both the disparate beginning point and the systematic challenges faced by rural schools. While learners in Johannesburg or Cape Town may engage daily with online resources, those in Limpopo or Eastern Cape often lack even the basic infrastructure to support such learning. The result is not only unequal education outcomes but also unequal preparation for the digital economy (Gardner Mwansa, 2025).</p>
 
-    <h2>Conclusion</h2>
-    <p>South Africa stands at a crossroads. Without urgent investment, rural schools risk being further marginalized in an economy increasingly shaped by technology...</p>
+      <h2 id="challenges">Challenges in rural contexts</h2>
+      <p>The digital divide is not just about cables and devices. It's about opportunity; who gets it, and who doesn't. Bringing 4IR and 5IR into rural classrooms is far from straightforward. Several persistent challenges must be addressed:</p>
+      <ul>
+        <li>Infrastructure deficits: Many schools still struggle with unreliable electricity, poor connectivity, and inadequate facilities (Aruleba, 2022).</li>
+        <li>Affordability barriers: Laptops. Tablets, and mobile data remain unaffordable for many households (Gardner Mwansa, 2025).</li>
+        <li>Teachers' preparedness: A significant proportion of educators report low confidence in digital literacy, limiting the integration of technology in learning (International Labour Organization, 2022).</li>
+      </ul>
 
-    <h2>References</h2>
-    <ul>
-      <li>International Labour Organization. (2022). <em>Skills demand and supply in South Africa’s digital economy</em>. <a href="https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40africa/%40ro-abidjan/documents/genericdocument/wcms_901442.pdf">Link</a></li>
-      <li>Government of South Africa. (2020). <em>National Digital and Future Skills Strategy</em>. <a href="https://www.gov.za/sites/default/files/gcis_document/202009/43730gen513.pdf">Link</a></li>
-      <li>Ahiaku, J. F. (2025). <em>Rural schools and technology use for sustainability</em>. <a href="https://doi.org/10.1007/s10639-024-13311-9">Link</a></li>
-      <li>Mwansa, G. (2025). <em>Exploring the challenges and solutions for digital exclusion in rural South Africa</em>. <a href="https://doi.org/10.1007/s44282-025-00189-2">Link</a></li>
-      <li>Invigilator. (2023). <em>What SA’s education statistics reveal about learning realities</em>. <a href="https://invigilator.app/en/what-sa-s-education-statistics-reveal-about-learning-realities/">Link</a></li>
-      <li>Aruleba, K., Adebesin, T., & Ojo, S. (2022). <em>Exploring digital transformation challenges in rural areas of South Africa</em>. <a href="https://doi.org/10.1016/j.jrurstud.2022.09.004">Link</a></li>
-    </ul>
+      <h2 id="opportunities">Opportunities for transformation</h2>
+      <p>Despite these barriers, 4IR and 5IR offer exciting opportunities to reimagine rural education:</p>
+      <ul>
+        <li>AI-driven platforms could personalize learning, offering learners tailored support in mathematics, science, or languages (Ahiaku, 2025).</li>
+        <li>Solar-powered computer labs provide a suitable solution in off-grid areas (Gardner Mwansa, 2025).</li>
+        <li>Public-private partnerships, especially with NGOs and technology firms, could expand infrastructure and training opportunities (Africa, 2020).</li>
+        <li>Currently, digital resources in indigenous languages are limited, making learning less accessible. But expanding such resources could make technology a powerful tool for inclusion (Aruleba, 2022).</li>
+      </ul>
+      <p>If implemented effectively, these solutions could prepare rural areas not just to adapt to but also contribute to the digital economy of the future.</p>
+
+      <h2 id="conclusion">Conclusion</h2>
+      <p>South Africa stands at crossroads. Without urgent investment, rural schools' risk being further marginalized in an economy increasingly shaped by technology. Whether rural learners are left behind or leap ahead will depend on how South Africa bridges the digital divide today.</p>
+
+      <div class="references" id="references">
+        <h2>References</h2>
+        <ul>
+          <li>International Labour Organization. (2022). <em>Skills demand and supply in South Africa's digital economy</em>. Retrieved from https://www.ilo.org/sites/default/files/wcmsp5/groups/public/%40africa/%40ro-abidjan/documents/genericdocument/wcms_901442.pdf</li>
+          <li>Africa, G. o. (2020). <em>National Digital and Future Skills Strategy</em>. Retrieved from https://www.gov.za/sites/default/files/gcis_document/202009/43730gen513.pdf</li>
+          <li>Ahiaku, J. F. (2025, January 14). <em>Rural schools and technology use for sustainability: The challenge of digital exclusion</em>. Education and Information Technologies., 30, 12557-12571. doi:https://doi.org/10.1007/s10639-024-13311-9</li>
+          <li>Gardner Mwansa, M. R. (2025). <em>Bridging the digital divide: exploring the challenges and solutions for digital exclusion in rural South Africa</em>. Retrieved June 9, 2025, from https://link.springer.com/article/10.1007/s44282-025-00189-2</li>
+          <li>Invigilator. (n.d.).(2023). <em>What SA's education statistics reveal about learning realities</em>. Retrieved from https://invigilator.app/en/what-sa-s-education-statistics-reveal-about-learning-realities/</li>
+          <li>Aruleba, K., Adebesin, T., & Ojo, S. (2022). <em>Exploring digital transformation challenges in rural areas of South Africa</em>. Journal of Rural Studies, 93, 33–44. https://doi.org/10.1016/j.sciaf.2022.e01190</li>
+        </ul>
+      </div>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Cobolenkosi Msweli | Designed for Honours Research Publication</p>
+    <div class="container">
+      <p>&copy; 2025 Cobolenkosi Msweli | Designed for Honours Research Publication</p>
+      <p>Contact: <a href="mailto:author@example.com">author@example.com</a></p>
+    </div>
   </footer>
 </body>
-
 </html>
